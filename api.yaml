@@ -1,0 +1,35 @@
+openapi: 3.0.0
+
+info:
+  title: YOYO Weather API
+  description: Getting weather of the city
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8000
+  
+    description: Getting weather of the city
+
+paths:
+  /api/locations/{city}:
+    get:
+      tags:
+        - Weather
+      operationId: weather
+      parameters:
+      - in: path
+        name: city
+        schema:
+          type: string
+      - in: query
+        name: days
+        schema:
+          type: string
+      responses:
+        '404':
+          description: Not found (City is not filled).
+        '400':
+          description: Bad request (No matching location found)
+        '200':
+          description: OK 
+        
